@@ -1,0 +1,25 @@
+header h1 {
+	margin: 40px 450px;
+	padding: 8px;
+	font-family: 'Gloria Hallelujah', cursive;
+	border: 2px black double;
+	border-radius: 5px;
+}
+
+main #city {
+	font-family: 'Bahiana', cursive;
+	font-size: 50px;
+}
+
+#weather-box, #temp-box {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#temp h1 {
+	display: inline;
+}
+
+#temp button {
+	background-color: inherit;
+	border: 0px;
+}

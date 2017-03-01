@@ -1,13 +1,20 @@
+header {
+	
+}
+
 header h1 {
 	margin: 40px 450px;
 	padding: 8px;
 	font-family: 'Gloria Hallelujah', cursive;
-	border: 2px black double;
 	border-radius: 5px;
+	color: white;
+	background-color: black;
 }
 
-#weather-img {
-	background-repeat: no-repeat;
+main {
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	filter: drop-shadow(10px 10px 10px white);
 }
 
 main #city {
@@ -31,4 +38,41 @@ main #city {
 
 #temp button:focus {
 	outline: 0px;
+}
+
+.mist{
+  background:url("http://randomwallpapers.net/download.php?id=34913292459814")no-repeat center fixed;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;  
+}
+.few-clouds{
+  background:url("http://newtopwallpapers.com/wp-content/uploads/2013/04/Rainy-Day-Desktop-HD-Wallpaper.jpg")no-repeat center fixed;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;  
+}
+.thunder-storm{
+  background:url("http://cdn.wallpapersafari.com/19/52/t8XUp6.jpg")no-repeat center fixed;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;  
+}
+.snow{
+  background:url("http://kurld.com/image.php?pic=/images/wallpapers/wallpaper-snow/wallpaper-snow-10.jpg")no-repeat center fixed;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;  
+}
+.rain{
+  background:url("http://onehdwallpaper.com/wp-content/uploads/2014/09/Rainy-Day-hd-wallpapers.jpg")no-repeat center fixed;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;  
+}
+.clear-sky{
+  background:url("http://wallpapercave.com/wp/l9WDprr.jpg") no-repeat center fixed;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;  
 }

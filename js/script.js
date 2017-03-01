@@ -4,6 +4,8 @@ $(document).ready(function () {
 	var temp_cel;
 	var temp_far;
 	var weather_desc;
+	var iconId;
+	var descript;
 	function updateWeather() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (location) {
@@ -31,11 +33,43 @@ $(document).ready(function () {
 						$('#temp > button > h1').html('C');
 						// console.log(response.weather[0].main);
 						// console.log(response.name);
-						if (weather_desc == 'Clear') {
-							console.log(weather_desc);
-							$('#weather-img').html('<img src=\'http://www.gannett-cdn.com/-mm-/719e7bcee360ff12d4581723688418bf93195dad/c=0-0-449-338&r=x404&c=534x401/local/-/media/MIGroup/PortHuron/2014/09/16/1410873237000-SUNNY.jpg\'>');
-						}
-						$('#weather-img > img').addClass('img-responsive');
+						iconId = response.weather[0].icon;
+						descript = response.weather[0].description;
+						$('#icon').attr('src', "http://openweathermap.org/img/w/" + iconId + ".png");
+						$("body").removeClass();
+     					switch (descript) {
+        					case 'clear sky':
+					            $("body").addClass("clear-sky");
+					        break;
+
+					        case 'broken clouds':
+					        case 'few clouds':
+					        case 'scattered clouds':
+					            $("body").addClass("few-clouds");
+					        break;
+
+					        case 'shower rain':
+					        case 'light rain':
+					        case 'heavy rain':
+					        case 'rain':
+					           $("body").addClass("rain");
+					        break;
+
+					        case 'thunderstorm':
+					             $("body").addClass("thunder-storm");
+					        break;
+
+					        case 'snow':
+					            $("body").addClass("snow");
+					        break;
+
+					        case 'mist':
+					            $("body").addClass("mist");
+					        break;
+
+					        default:
+					            $("body").addClass("thunder-storm");
+					    }
 					}
 				});
 			});

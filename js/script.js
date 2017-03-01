@@ -1,7 +1,9 @@
 $(document).ready(function () {
 	var lat;
 	var long;
-	var temperature;
+	var temp_cel;
+	var temp_far;
+	var weather_desc;
 	function updateWeather() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (location) {
@@ -17,13 +19,23 @@ $(document).ready(function () {
 					},
 					success : function (response) {
 						$('#city').html(response.name + ',' + response.sys.country);
+						$('#weather-box > ul > h1').text('Weather');
 						$('#weather').html('<h1>' + response.weather[0].main + '</h1>');
-						temperature = response.main.temp;
-						temperature -= 273;
-						$('#temp > h1').html('<h1>' + Math.round(temperature * 100) / 100 + '</h1>');
-						$('#temp > button > h1').html('&#8451');
+						weather_desc = response.weather[0].main;
+						console.log(weather_desc);
+						temp_cel = response.main.temp;
+						temp_cel -= 273;
+						temp_far = temp_cel*1.8 + 32;
+						$('#temp-box > ul > h2').text('Temperature');
+						$('#temp > h1').html(Math.round(temp_cel * 100) / 100 + '&#176');
+						$('#temp > button > h1').html('C');
 						// console.log(response.weather[0].main);
 						// console.log(response.name);
+						if (weather_desc == 'Clear') {
+							console.log(weather_desc);
+							$('#weather-img').html('<img src=\'http://www.gannett-cdn.com/-mm-/719e7bcee360ff12d4581723688418bf93195dad/c=0-0-449-338&r=x404&c=534x401/local/-/media/MIGroup/PortHuron/2014/09/16/1410873237000-SUNNY.jpg\'>');
+						}
+						$('#weather-img > img').addClass('img-responsive');
 					}
 				});
 			});
@@ -33,8 +45,16 @@ $(document).ready(function () {
 	updateWeather();
 
 	$('#unit').click(function () {
-		var text = $('#unit > h1').text();
+		var text = $('#unit > h1').html();
 		console.log(text);
 		console.log('working');
+		if($('#unit > h1').text() == 'C') {
+			$('#unit > h1').html('F');
+			$('#temp > h1').html(Math.round(temp_far * 100) / 100 + '&#176')
+		}
+		else {
+			$('#unit > h1').html('C');
+			$('#temp > h1').html(Math.round(temp_cel * 100) / 100 + '&#176');
+		}
 	});
 });
